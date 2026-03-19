@@ -43,6 +43,10 @@ public class Usuario {
 		return this.tweets.stream().filter(tw -> !tw.esRt()).map(tw -> (Tweet) tw).collect(Collectors.toList());
 	}
 	
+	public List<Publicacion> getPublicaciones(){
+		return new ArrayList<Publicacion>(this.tweets);
+	}
+	
 
 	
 	
