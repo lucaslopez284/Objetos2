@@ -2,11 +2,15 @@ package ar.edu.unlp.info.oo1.ej02;
 
 public class Spock implements Jugada{
 	
+	public Spock() {
+		
+	}
+	
 	public String juegaContraPiedra(Piedra pie) {
 		return "Gano Spock";
 	}
 	
-	public String juegaContraPapel(Papel pal) {
+	public String juegaContraPapel(Papel pap) {
 		return "Gano Papel";
 	}
 	

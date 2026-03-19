@@ -2,11 +2,15 @@ package ar.edu.unlp.info.oo1.ej02;
 
 public class Tijera implements Jugada {
 	
+	public Tijera() {
+	
+	}
+	
 	public String juegaContraPiedra(Piedra pie) {
 		return "Gano Piedra";
 	}
 	
-	public String juegaContraPapel(Papel pal) {
+	public String juegaContraPapel(Papel pap) {
 		return "Gano Tijera";
 	}
 	
