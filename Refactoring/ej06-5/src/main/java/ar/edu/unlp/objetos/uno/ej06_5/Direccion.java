@@ -19,6 +19,15 @@ public class Direccion {
 		return departamento;
 	}
 	
+	public String getDireccionFormateada() {
+		return 
+				this.getLocalidad() + "," +
+				this.getCalle() + "," +
+				this.getNumero() + "," +
+				this.getDepartamento()
+		      ;
+	}
+	
 	
 
 }

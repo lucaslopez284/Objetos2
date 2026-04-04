@@ -12,6 +12,10 @@ public class ItemCarrito {
     public int getCantidad() {
         return this.cantidad;
     }
+    
+    public double calcularCosto() {
+    	return this.getProducto().getPrecio() * this.getCantidad();
+    }
 
 
 }

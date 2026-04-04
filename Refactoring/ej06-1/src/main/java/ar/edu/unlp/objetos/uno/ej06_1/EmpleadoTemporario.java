@@ -1,16 +1,13 @@
 package ar.edu.unlp.objetos.uno.ej06_1;
 
-public class EmpleadoTemporario {
-	public String nombre;
-    public String apellido;
-    public double sueldoBasico = 0;
+public class EmpleadoTemporario extends EmpleadoPasante {
     public double horasTrabajadas = 0;
     public int cantidadHijos = 0;
     // ......
     
     public double sueldo() {
-     return this.sueldoBasico + (this.horasTrabajadas * 500) + (this.cantidadHijos * 1000) - (this.sueldoBasico * 0.13);
-}
+     return super.sueldo() + (this.horasTrabajadas * 500) + (this.cantidadHijos * 1000);
+    }
 
 
 }

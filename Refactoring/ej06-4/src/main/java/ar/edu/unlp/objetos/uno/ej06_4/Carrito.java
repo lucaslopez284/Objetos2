@@ -6,7 +6,7 @@ public class Carrito {
     
     public double total() {
     	return this.items.stream()
-    			.mapToDouble(item -> item.getProducto().getPrecio() * item.getCantidad())
+    			.mapToDouble(item -> item.calcularCosto())
     			.sum();
     	}
 

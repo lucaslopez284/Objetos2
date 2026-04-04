@@ -1,14 +1,10 @@
 package ar.edu.unlp.objetos.uno.ej06_1;
 
-public class EmpleadoPlanta {
-	public String nombre;
-    public String apellido;
-    public double sueldoBasico = 0;
+public class EmpleadoPlanta extends EmpleadoPasante{
     public int cantidadHijos = 0;
-    // ......
     
     public double sueldo() {
-        return this.sueldoBasico + (this.cantidadHijos * 2000) - (this.sueldoBasico * 0.13);
+        return super.sueldo() + this.cantidadHijos * 2000;
     }
 
 
