@@ -5,29 +5,16 @@ public class Usuario {
 	
 	private String nombre;
 	private Integer telefono;
-	private String tipoSubscripcion;
+	private Suscripcion tipoSubscripcion;
 	private String email;
 	private List<Pelicula> peliculasCompradas;
 
-    public void setTipoSubscripcion(String unTipo) {
+    public void setTipoSubscripcion(Suscripcion unTipo) {
    	 this.tipoSubscripcion = unTipo;
     }
     
     public double calcularCostoPelicula(Pelicula pelicula) {
-   	 double costo = 0;
-   	 if (tipoSubscripcion=="Basico") {
-   		 costo = pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno();
-   	 }
-   	 else if (tipoSubscripcion== "Familia") {
-   		 costo = (pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno()) * 0.90;
-   	 }
-   	 else if (tipoSubscripcion=="Plus") {
-   		 costo = pelicula.getCosto();
-   	 }
-   	 else if (tipoSubscripcion=="Premium") {
-   		 costo = pelicula.getCosto() * 0.75;
-   	 }
-   	 return costo;
+   	  return this.tipoSubscripcion.calcularCostoPelicula(pelicula);
     }
 
 
