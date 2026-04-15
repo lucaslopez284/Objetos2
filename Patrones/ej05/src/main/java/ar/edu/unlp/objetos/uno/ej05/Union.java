@@ -1,6 +1,7 @@
 package ar.edu.unlp.objetos.uno.ej05;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Union extends ElementoQuimico {
 	
@@ -11,8 +12,9 @@ public class Union extends ElementoQuimico {
 	}
 
 	public String formula() {
-		// TODO Auto-generated method stub
-		return null;
+		return partes.stream()
+                .map(p -> p.formula())
+                .collect(Collectors.joining());
 	}
 
 	public int pesoMolecular() {

@@ -20,9 +20,9 @@ class TopografiaTest {
 
 	@Test
 	void testSonIgualesEnProporcion() {
-		assertTrue(t1.sonIgualesEnProporcion(t2));
-		assertTrue(t3.sonIgualesEnProporcion(t4));
-		assertFalse(t1.sonIgualesEnProporcion(t4));
+		assertTrue(t1.sonIguales(t2));
+		assertTrue(t3.sonIguales(t4));
+		assertFalse(t1.sonIguales(t4));
 	}
 
 }

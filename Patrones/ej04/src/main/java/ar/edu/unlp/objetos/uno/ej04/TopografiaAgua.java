@@ -14,4 +14,26 @@ public class TopografiaAgua extends Topografia {
 		return 0;
 	}
 
+	
+	public boolean compararConMixta(Topografia otraTopografia) {
+		return false;
+	}
+
+	public boolean compararConAgua(Topografia otraTopografia) {
+		return true;
+	}
+
+	public boolean compararConTierra(Topografia otraTopografia) {
+		return false;
+	}
+
+
+	public boolean equals(Topografia otra) {
+		return otra.compararConAgua(this);
+	}
+	
+	
+	
+	
+
 }

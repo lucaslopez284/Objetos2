@@ -13,6 +13,10 @@ public class TopografiaCompuesta extends Topografia{
 	public void agregarTopografia(Topografia nueva) {
 		this.partes.add(nueva);
 	}
+	
+	public void eliminarTopografia(Topografia aBorrar) {
+		this.partes.remove(aBorrar);
+	}
 
 	public double proporcionAgua() {
 		return (double) this.partes.stream()
@@ -25,5 +29,31 @@ public class TopografiaCompuesta extends Topografia{
 				.mapToDouble(p-> p.proporcionTierra())
 				.sum()/ 4;
 	}
+	
+	public boolean sonIguales(Topografia otra) {
+		if (!this.sonIgualesProporcion(otra)) {
+			return false;
+		}
+		return otra.compararConMixta(this);
+	}
+
+	@Override
+	public boolean compararConMixta(Topografia otraTopografia) {
+		// TODO Auto-generated method stub
+		return this.partes.equals(otraTopografia);
+	}
+
+	@Override
+	public boolean compararConAgua(Topografia otraTopografia) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean compararConTierra(Topografia otraTopografia) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 
 }
