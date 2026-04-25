@@ -1,5 +1,6 @@
 package ar.edu.unlp.objetos.uno.ej11;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -35,7 +36,16 @@ public class FileSystem {
 	 * filesystem 
 	 */
 	public Archivo archivoMasGrande() {
-		  return null;
+	    Archivo mayor = null;
+	    for (Elemento elem : this.elementos) {
+	        Archivo candidato = elem.archivoMasGrande();
+	        if (candidato != null) {
+	            if (mayor == null || candidato.espacio() > mayor.espacio()) {
+	                mayor = candidato;
+	            }
+	        }
+	    }
+	    return mayor;
 	}
 		  
 
@@ -44,7 +54,17 @@ public class FileSystem {
 	 * del filesystem
 	 */
 	public Archivo archivoMasNuevo() {
-		  
+	    Archivo nuevo = null;
+	    for (Elemento elem : this.elementos) {
+	        Archivo candidato = elem.archivoMasNuevo();
+	        if (candidato != null) {
+	            if (nuevo == null ||
+	                candidato.getFechaCreacion().compareTo(nuevo.getFechaCreacion()) > 0) {
+	                nuevo = candidato;
+	            }
+	        }
+	    }
+	    return nuevo;
 	}
 
 	 /**
@@ -52,11 +72,13 @@ public class FileSystem {
 	  * nivel del filesystem
 	  */
 	public Elemento buscar(String nombre) {
-	    return this.elementos.stream()
-	        .map(e -> e.buscar(nombre)) 
-	        .filter(res -> res != null)   
-	        .findFirst()
-	        .orElse(null);
+		for (Elemento e : this.elementos) {
+	        Elemento encontrado = e.buscar(nombre);
+	        if (encontrado != null) {
+	            return encontrado;
+	        }
+	    }
+	    return null;
 	}
 
 	 /**
@@ -64,17 +86,20 @@ public class FileSystem {
 	  * contenido en cualquier nivel del filesystem
 	  */
 	 public List<Elemento> buscarTodos(String nombre){
-		 return this.elementos.stream()
-			        .flatMap(e -> {
-			            List<Elemento> lista = e.buscarTodos(nombre);
-			            return lista.stream();
-			        })
-			        .toList();        
+		 List<Elemento> resultado = new ArrayList<Elemento>();
+		 for (Elemento e : this.elementos) {
+			 resultado.addAll(e.buscarTodos(nombre));
+		 }
+		 return resultado;   
 	 }
 
 	  
 	 public String listadoDeContenido() {
-		 
-	 }
+		 String resultado = "";
+		 for (Elemento elem : this.elementos) {
+			 resultado += elem.listadoDeContenido("");
+		 }
+		 return resultado;
+		}
 
 }

@@ -1,6 +1,6 @@
 package ar.edu.unlp.objetos.uno.ej11;
 
-import java.util.List;
+import java.util.*;
 
 public class Archivo extends Elemento {
 
@@ -15,17 +15,38 @@ public class Archivo extends Elemento {
 	public int espacio() {
 		return this.espacio;
 	}
-	
-	public boolean esArchivo() {
-		return true;
-	}
-	
+
+	@Override
 	public Elemento buscar(String nombre) {
-		 return this.getNombre().equals(nombre) ? this : null;
+		return this.getNombre().equals(nombre) ? this: null;
+	}
+
+	@Override
+	public List<Elemento> buscarTodos(String nombre) {
+		List<Elemento> lista = new ArrayList<Elemento>();
+	    if (this.getNombre().equals(nombre)) {
+	        lista.add(this);
+	    }
+	    return lista;
 	}
 	
-	public List<Elemento> buscarTodos(String nombre){
-		return this.getNombre().equals(nombre) ? List.of(this) : List.of();
+	public String listadoDeContenido(String path) {
+		// TODO Auto-generated method stub
+		return path + "/" + this.getNombre() + "\n";
 	}
+
+	public Archivo archivoMasGrande() {
+		return this;
+	}
+
+	public Archivo archivoMasNuevo() {
+		return this;
+	}
+	
+	
+	
+	
+	
+	
 
 }
