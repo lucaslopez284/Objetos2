@@ -10,5 +10,7 @@ public abstract class General implements Estado {
 				+ unaExcursion.getFechaFin() +"\n"
 				+ unaExcursion.getEncuentro() +"\n";
 	}
+	
+	public abstract void inscribir(Excursion unaExcursion, Usuario unUsuario);
 
 }

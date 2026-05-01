@@ -26,17 +26,30 @@ public class Excursion {
 		this.cupoMax = cupoMax;
 		this.inscriptos = new ArrayList<Usuario>();
 		this.listaDeEspera = new ArrayList<Usuario>();
+		this.estado = new Provisorio();
 	}
 	
-	private void agregarAListaDeEspera(Usuario unUsuario) {
+	public void agregarAListaDeEspera(Usuario unUsuario) {
 		this.listaDeEspera.add(unUsuario);
 	}
 	
+	public void agregarAInscriptos(Usuario unUsuario) {
+		this.inscriptos.add(unUsuario);
+	}
+	
 	public void inscribir(Usuario unUsuario) {
-		if (this.inscriptos.size() < this.cupoMin) {
+		if (this.inscriptos.size() < this.getCupoMax()) {
 			this.inscriptos.add(unUsuario);
+			if (this.inscriptos.size() == this.getCupoMin()) {
+				this.setEstado(new Confirmado());
+			}
+			if (this.inscriptos.size() == this.getCupoMax()) {
+				this.setEstado(new Completo());
+			}
 		}
+		else {
 			this.agregarAListaDeEspera(unUsuario);
+		}
 	}
 
 	public void setEstado(Estado estado) {
@@ -45,6 +58,10 @@ public class Excursion {
 
 	public List<Usuario> getInscriptos() {
 		return inscriptos;
+	}
+	
+	public int cantidadInscriptos() {
+		return inscriptos.size();
 	}
 	
 	public String getNombre() {

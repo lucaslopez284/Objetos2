@@ -7,5 +7,12 @@ public class Confirmado extends General {
 				+ unaExcursion.getEmailUsuarios() 
 				+ unaExcursion.faltantes(unaExcursion.getCupoMin()) + "\n";
 	}
+	
+	public void inscribir(Excursion unaExcursion, Usuario unUsuario) {
+		unaExcursion.agregarAInscriptos(unUsuario);
+		if (unaExcursion.cantidadInscriptos() == unaExcursion.getCupoMax()) {
+			unaExcursion.setEstado(new Completo());
+		}
+	}
 
 }

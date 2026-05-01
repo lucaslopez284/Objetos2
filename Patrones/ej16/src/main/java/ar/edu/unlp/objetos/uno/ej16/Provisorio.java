@@ -6,5 +6,12 @@ public class Provisorio extends General {
 		return super.obtenerInformacion(unaExcursion)
 				+ unaExcursion.faltantes(unaExcursion.getCupoMin());
 	}
+	
+	public void inscribir(Excursion unaExcursion, Usuario unUsuario) {
+		unaExcursion.agregarAInscriptos(unUsuario);
+		if (unaExcursion.cantidadInscriptos() == unaExcursion.getCupoMin()) {
+			unaExcursion.setEstado(new Confirmado());
+		}
+	}
 
 }
