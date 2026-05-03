@@ -7,5 +7,6 @@ public interface Builder {
 	public void elegirDisco();
 	public void elegirTarjeta();
 	public void elegirGabinete();
+	public Equipo equipo();
 
 }
