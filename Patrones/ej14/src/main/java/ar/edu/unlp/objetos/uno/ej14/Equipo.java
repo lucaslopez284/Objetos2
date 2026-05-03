@@ -18,4 +18,6 @@ public class Equipo {
 		return this.componentes.stream().mapToDouble(com -> com.getConsumo()).sum();
 	}
 	
+	
+	
 }
