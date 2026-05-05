@@ -13,18 +13,20 @@ public class Dispositivo {
 		this.ringer = ringer;
 	}
 
-
-
 	public String send(String data) {
-		long crc = this.crcCalculator.crcFor(data);
+		int crc = this.crcCalculator.crcFor(data);
 		return this.connection.sendData(data, crc);
 		
 	}
 
-
-
-	public void setCrc(Strategy crcCalculator) {
+	public void configurarCRC(Strategy crcCalculator) {
 		this.crcCalculator = crcCalculator;
+	}
+
+	public void conectarCon(Connection connection) {
+		this.connection = connection;
+		System.out.println(this.connection.pict());
+		this.ringer.ring();
 	}
 	
 	
