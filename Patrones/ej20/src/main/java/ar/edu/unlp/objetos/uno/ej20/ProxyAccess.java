@@ -1,5 +1,6 @@
 package ar.edu.unlp.objetos.uno.ej20;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -10,18 +11,27 @@ public class ProxyAccess implements DatabaseAccess {
 	
 	
 	
+	
+	
+	public ProxyAccess(String password, DatabaseRealAccess database) {
+		super();
+		this.password = password;
+		this.loggedIn = false;
+		this.dbRealAccess = database;
+	}
+
 	public void logIn(String password) {
 		if (this.password.equals(password)) {
 			this.loggedIn = true;
 		}
 	}
 	
-	public void logOut(String password) {
+	public void logOut() {
 		this.loggedIn = false;
 	}
 	
 	private boolean isLoggedIn() {
-		return this.isLoggedIn();
+		return this.loggedIn;
 	}
 
 	@Override
@@ -29,7 +39,7 @@ public class ProxyAccess implements DatabaseAccess {
 		if (this.isLoggedIn()) {
 			return this.dbRealAccess.getSearchResults(queryString);
 		}
-		return null;
+		return new ArrayList<>();
 	}
 
 	@Override
