@@ -4,28 +4,29 @@ import java.util.List;
 
 public class HomeWeatherStation implements WeatherData {
 
+	private double temperatura;
+	private double presion;
+	private double radiacionSolar;
+	private List<Double> temperaturas;
+
 	@Override
 	public double getTemperatura() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.temperatura;
 	}
 
 	@Override
 	public double getPresion() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.presion;
 	}
 
 	@Override
 	public double getRadiacionSolar() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.radiacionSolar;
 	}
 
 	@Override
 	public List<Double> getTemperaturas() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.temperaturas;
 	}
 
 	@Override
